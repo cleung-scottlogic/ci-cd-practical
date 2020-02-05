@@ -12,5 +12,5 @@ import App from './App';
 test('sum two numbers', () => {
   const wrapper = shallow(<App />);
   
-  expect(wrapper.find('#firstValue').exists()).toBeFalsy();
+  expect(wrapper.find('#firstValue').exists()).toBeTruthy();
 })

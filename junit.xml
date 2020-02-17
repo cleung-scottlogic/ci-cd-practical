@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="1" time="7.291">
+  <testsuite name="undefined" errors="0" failures="1" skipped="0" timestamp="2020-02-17T12:22:58" time="6.325" tests="1">
+    <testcase classname=" displays the title &quot;React App&quot;" name=" displays the title &quot;React App&quot;" time="0.01">
+      <failure>Error: expect(received).toEqual(expected) // deep equality
+
+Expected: &quot;React App&quot;
+Received: &quot;My Site&quot;
+    at Object.&lt;anonymous&gt; (C:\dev\ci-cd-practical\e2e\specs\index.js:30:17)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

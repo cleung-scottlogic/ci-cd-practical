@@ -55,3 +55,29 @@ jobs:
         only: master
     steps:
       - run: npx surge build/ https://ci-cd-cl-development.surge.sh
+  
+  e2e_test:
+    docker:
+      - image: circleci/node:12.13.0
+
+    working_directory: ~/repo
+    requires:
+      - build_and_test
+    filters:
+      branches:
+        only: master
+    steps:
+      - run: yarn e2e
+
+  performance_test:
+    docker:
+      - image: circleci/node:12.13.0
+
+    working_directory: ~/repo
+    requires:
+      - build_and_test
+    filters:
+      branches:
+        only: master
+    steps:
+      - run: yarn performance

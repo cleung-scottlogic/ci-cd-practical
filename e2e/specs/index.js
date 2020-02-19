@@ -27,7 +27,7 @@ afterAll(async () => {
 
 it('displays the title "React App"', async () => {
   const title = await page.title();
-  expect(title).toEqual('My Site');
+  expect(title).toEqual("React App");
 });
 
 // it('displays the header welcome message', async () => {

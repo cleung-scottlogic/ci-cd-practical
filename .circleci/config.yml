@@ -113,12 +113,12 @@ workflows:
     jobs:
       - build_and_test
       - deploy_to_staging:
-          deployPlace: https://ci-cd-cl-development.surge.sh
           requires: 
             - build_and_test
           filters:
             branches:
               only: master
+          
       - e2e_test:
           requires:
             - build_and_test

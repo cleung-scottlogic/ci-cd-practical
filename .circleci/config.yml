@@ -45,9 +45,9 @@ jobs:
   
   deploy_to_staging:
     parameters:
-      deployment:
+      deploymentPlace:
         description: "deployment url"
-        default: https://ci-cd-cl-development.surge.sh
+        default: "https://ci-cd-cl-development.surge.sh"
         type: string
     docker:
       # specify the version you desire here
@@ -112,7 +112,7 @@ workflows:
     jobs:
       - build_and_test
       - deploy_to_staging:
-          deployment: https://ci-cd-cl-development.surge.sh
+          deploymentPlace: "https://ci-cd-cl-development.surge.sh"
           requires: 
             - build_and_test
           filters:

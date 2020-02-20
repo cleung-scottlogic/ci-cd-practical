@@ -126,3 +126,11 @@ workflows:
           filters:
             branches:
               only: master
+      - hold_production_deploy:
+          type: approval
+          requires:
+            - performance_test
+            - ui_test
+          filters:
+            branches:
+              only: master

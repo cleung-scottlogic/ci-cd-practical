@@ -46,7 +46,7 @@ jobs:
   deploy_to_staging:
     parameters:
       deploymentPlace:
-        description: "deployment url"
+        description: deployment url
         default: https://ci-cd-cl-development.surge.sh
         type: string
     docker:

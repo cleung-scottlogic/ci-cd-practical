@@ -44,6 +44,11 @@ jobs:
             - .
   
   deploy_to_staging:
+    parameters:
+      deployment:
+        description: "deployment url"
+        default: https://ci-cd-cl-development.surge.sh
+        type: string
     docker:
       # specify the version you desire here
       - image: circleci/node:12.13.0
@@ -62,7 +67,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: npx surge build/ https://ci-cd-cl-development.surge.sh
+      - run: npx surge build/ << deployment >>
   
   e2e_test:
     docker:
@@ -107,6 +112,7 @@ workflows:
     jobs:
       - build_and_test
       - deploy_to_staging:
+          deployment: https://ci-cd-cl-development.surge.sh
           requires: 
             - build_and_test
           filters:

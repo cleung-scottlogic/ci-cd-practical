@@ -67,7 +67,7 @@ jobs:
     steps:
       - attach_workspace:
           at: .
-      - run: npx surge build/ << deploymentPlace >>
+      - run: npx surge build/ deploymentPlace
   
   e2e_test:
     docker:

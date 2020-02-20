@@ -63,6 +63,27 @@ jobs:
       - attach_workspace:
           at: .
       - run: npx surge build/ https://ci-cd-cl-development.surge.sh
+
+  deploy_to_prod:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:12.13.0
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
+    requires:
+        - build_and_test
+    filters:
+      branches:
+        only: master
+    steps:
+      - attach_workspace:
+          at: .
+      - run: npx surge build/ https://ci-cd-cl-prod.surge.sh
   
   e2e_test:
     docker:
@@ -127,9 +148,8 @@ workflows:
           filters:
             branches:
               only: master
-      - hold_production_deploy:
-          type: approval
-          requires:
+      - deploy_to_prod:
+          requires: 
             - performance_test
             - e2e_test
           filters:

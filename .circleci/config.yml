@@ -49,6 +49,7 @@ jobs:
         description: deployment url
         default: https://ci-cd-cl-development.surge.sh
         type: string
+    machine: true
     docker:
       # specify the version you desire here
       - image: circleci/node:12.13.0

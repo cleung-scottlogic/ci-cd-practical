@@ -130,7 +130,7 @@ workflows:
           type: approval
           requires:
             - performance_test
-            - ui_test
+            - e2e_test
           filters:
             branches:
               only: master

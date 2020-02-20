@@ -66,7 +66,7 @@ jobs:
   
   e2e_test:
     docker:
-      - image: circleci/node:12.13.0
+      - image: circleci/node:12.13.0-broswers
 
     working_directory: ~/repo
     requires:
@@ -75,11 +75,13 @@ jobs:
       branches:
         only: master
     steps:
+      - attach_workspace:
+          at: .
       - run: yarn e2e
 
   performance_test:
     docker:
-      - image: circleci/node:12.13.0
+      - image: circleci/node:12.13.0-browsers
 
     working_directory: ~/repo
     requires:
@@ -88,7 +90,16 @@ jobs:
       branches:
         only: master
     steps:
+      - attach_workspace:
+          at: .
       - run: yarn performance
+      - run:
+          name: Store Performance Test Results
+          command: |
+            mkdir -p /tmp/perf_results
+            cp *.report.* /tmp/perf_results
+      - store_artifacts:
+          path: /tmp/perf_results
 
 workflows:
   version: 2
